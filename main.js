@@ -9,7 +9,15 @@ block_image_width = 5;
 block_image_height = 5;
 
 function load_img(){
-	// write code to Upload golf image on the canvas
+	fabric.img.fromURL("golf-h.png", function(Img){
+		hole_obj = img;
+		hole_obj.scaleToWidth(50);
+		hole_obj.scaleToHeight(50);
+		hole_obj.set({
+			top:hole_y,
+			left:hole_x
+		});
+	});
 	new_image();
 }
 
