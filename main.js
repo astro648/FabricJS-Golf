@@ -41,11 +41,12 @@ function my_keydown(e)
 {
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
-	/* Check the coordinates of the ball and hole images to finish the game. 
-	And id coordinates matches them remove ball image, 
-	display "GAME OVER!!!" 
-	and make canvas border 'red'. */
 	
+	if((ball_x==hole_x)&&(ball_y==hole_y)){
+		canvas.remove(ball_obj);
+		document.getElementById("hd3").innerHTML = "You have hit the goal!";
+		document.getElementById("myCanvas").style.borderColor = "red";
+	}
 	else{
 		if(keyPressed == '38')
 		{
@@ -71,19 +72,35 @@ function my_keydown(e)
 	
 	function up()
 	{
-		// Write a code to move ball upward.
+		if(ball_y >= 0){
+			ball_y = ball_y - block_image_height;
+			console.log("block image height = "+block_image_height);
+			console.log("x = "+ball_x+" | y = "+ball_y);
+			canvas.remove(ball_obj);
+			new_image();
+		}
 	}
 
 	function down()
 	{
-		 // Write a code to move ball downward.
+		if(ball_y <= 450){
+			ball_y = ball_y + block_image_height;
+			console.log("block image height = "+block_image_height);
+			console.log("x = "+ball_x+" | y = "+ball_y);
+			canvas.remove(ball_obj);
+			new_image();
+		}
 	}
 
 	function left()
 	{
 		if(ball_x >5)
 		{
-			// Write a code to move ball left side.
+			ball_x = ball_x - block_image_width;
+			console.log("block image height = "+block_image_height);
+			console.log("x = "+ball_x+" | y = "+ball_y);
+			canvas.remove(ball_obj);
+			new_image();
 		}
 	}
 
@@ -91,7 +108,11 @@ function my_keydown(e)
 	{
 		if(ball_x <=1050)
 		{
-			// Write a code to move ball right side.
+			ball_x = ball_x + block_image_width;
+			console.log("block image height = "+block_image_height);
+			console.log("x = "+ball_x+" | y = "+ball_y);
+			canvas.remove(ball_obj);
+			new_image();
 		}
 	}
 	
